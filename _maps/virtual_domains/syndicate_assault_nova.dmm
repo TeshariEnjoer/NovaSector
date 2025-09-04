@@ -754,7 +754,6 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
 "CR" = (
-/obj/item/summon_beacon/lustwish,
 /obj/structure/closet/syndicate{
 	anchored = 1;
 	desc = "A basic closet for all your villainous needs.";

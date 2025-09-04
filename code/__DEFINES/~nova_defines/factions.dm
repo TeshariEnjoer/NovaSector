@@ -14,3 +14,6 @@
 
 // Ruin Turret faction
 #define FACTION_MALF_TURRET "malf-turret"
+
+// V.O.I.D faction
+#define FACTION_VOID "void"
