@@ -39,12 +39,14 @@
 		regeneration_time = recharge_time, \
 		shield_overlays = shield_layers)
 	RegisterSignal(mod.wearer, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(shield_reaction))
+	RegisterSignal(mod.wearer, COMSIG_ATOM_EXAMINE_MORE, PROC_REF(on_examine_more))
 
 
 /obj/item/mod/module/void/energy_shield/on_part_deactivation(deleting = FALSE)
 	var/datum/component/regenerative_shield/shield = mod.wearer.GetComponent(/datum/component/regenerative_shield)
 	qdel(shield)
 	UnregisterSignal(mod.wearer, COMSIG_LIVING_CHECK_BLOCK)
+	UnregisterSignal(mod.wearer, COMSIG_ATOM_EXAMINE_MORE)
 
 /obj/item/mod/module/void/energy_shield/proc/shield_reaction(mob/living/carbon/human/owner,
 	atom/movable/hitby,
@@ -56,10 +58,15 @@
 )
 	SIGNAL_HANDLER
 
-	if(mod.hit_reaction(owner, hitby, attack_text, 0, damage, attack_type))
+	if(mod.hit_reaction(owner, hitby, attack_text, 0, damage, attack_type) && attack_type != MELEE_ATTACK)
 		drain_power(use_energy_cost)
 		return SUCCESSFUL_BLOCK
 	return NONE
+
+/obj/item/mod/module/void/energy_shield/proc/on_examine_more(datum/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+	examine_list += list(span_boldnotice("Its purple-black shimmer falters in close combat, \
+										offering little defense against melee strikes."))
 
 /obj/item/mod/module/void/energy_shield/emp_act(severity)
 	. = ..()
