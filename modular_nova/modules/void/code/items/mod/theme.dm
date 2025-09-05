@@ -9,20 +9,20 @@
 
 
 /datum/mod_theme/void_combat
-	name = "voidcombat"
-	desc = "A menacing modular combat suit forged by V.O.I.D., cloaked in dread and lethal precision."
-	extended_desc = "An advanced combat exosuit shrouded in a haunting purple-black hue, crafted by V.O.I.D. \
-					for their merciless enforcers. Its sleek plating, forged from Voidtech-enhanced plasteel and \
-					reinforced with N-4-infused ceramics, offers unmatched protection. The undersuit, \
-					woven from a durathread and kevlar hybrid laced with volatile N-4 filaments, shields vulnerable \
-					areas while pulsing with an eerie glow. A flowing black cloak drapes over the suit, \
-					billowing with an ominous presence. Integrated with an outlawed Voidtech ablative shield module, \
-					it deflects energy-based weaponry with ruthless efficiency. \
-					A faintly glowing tag reads: 'Property of V.O.I.D. Unauthorized use will trigger N-4 contagion protocols. All rights terminated.'"
+	name = "Voidtech Reactive"
+	desc = "A menacing combat MOD suit forged by V.O.I.D., cloaked in dread and lethal precision."
+	extended_desc = "A formidable combat MOD suit veiled in a sinister purple-black sheen, crafted by V.O.I.D. for their relentless enforcers. \
+					Its sleek plating, forged from Voidtech-enhanced plasteel and fortified with N-4-infused ceramics, \
+					provides unmatched resilience. The undersuit, a hybrid weave of durathread and kevlar laced with volatile N-4 filaments, \
+					guards exposed areas while emanating an unsettling pulse. A billowing black cloak drapes over the suit, \
+					radiating an eerie menace. Integrated with an outlawed Voidtech one-way shield system, \
+					it effortlessly deflects incoming energy-based attacks while allowing unhindered strikes outward, \
+					though it falters against close-combat assaults. A faintly glowing tag warns: 'Property of V.O.I.D. \
+					Unauthorized use triggers N-4 contagion protocols. All rights terminated.'"
 	default_skin = "voidcombat"
 	armor_type = /datum/armor/mod_theme_void_combat
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
-	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
+	complexity_max = DEFAULT_MAX_COMPLEXITY + 10
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	siemens_coefficient = 0
 	slowdown_deployed = 0

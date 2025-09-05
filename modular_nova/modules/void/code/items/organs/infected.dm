@@ -3,8 +3,9 @@
 /obj/item/organ/heart/n4
 	name = "N-4 Tainted Heart"
 	desc = "A grotesque, N-4-corrupted human heart, swollen with pulsating black veins. Its sickly flesh writhes with viral decay, barely sustaining life while threatening to spread the Voidplague's curse."
-	icon_state = "heart-x"
-	base_icon_state = "heart-x"
+	icon = 'modular_nova/modules/void/icons/items/organs.dmi'
+	icon_state = "heart-n4-on"
+	base_icon_state = "heart-n4"
 	organ_flags = ORGAN_N4_CORRUPTED
 	maxHealth = STANDARD_ORGAN_THRESHOLD*0.2
 	beat_noise = "a wretched, irregular thump laced with sickly gurgles. You <b>must not touch this</b> lest it infects you."
@@ -14,8 +15,8 @@
 /obj/item/organ/heart/n4/on_life(seconds_per_tick, times_fired)
 	. = ..()
 	if(COOLDOWN_FINISHED(src, damage_cooldown))
-		COOLDOWN_START(src, damage_cooldown, 7 SECONDS)
-		owner.apply_damage(rand(3, 8), wound_clothing = FALSE)
+		COOLDOWN_START(src, damage_cooldown, 10 SECONDS)
+		owner.apply_damage(rand(4, 13), wound_clothing = FALSE)
 
 
 /obj/item/organ/heart/n4/pickup(mob/user)
@@ -32,7 +33,7 @@
 	name = "N-4 Blighted Liver"
 	desc = "A grotesque, N-4-corrupted human liver, riddled with pulsating black tendrils. \
 			Its decayed tissue struggles to filter toxins, exuding a sickly miasma that threatens to spread the Voidplague's curse."
-	icon_state = "liver-x"
+	icon_state = "liver-n4"
 	organ_flags = ORGAN_N4_CORRUPTED
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.1
 	alcohol_tolerance = ALCOHOL_RATE * 2
@@ -45,7 +46,7 @@
 	desc = "A pair of decaying, N-4-corrupted human lungs, riddled with pulsating black lesions. \
 			Their frail tissue wheezes with every breath, exuding a toxic miasma that threatens to spread the Voidplague's curse."
 	breath_noise = "a wretched, rattling wheeze laced with sickly gurgles. You <b>must not touch this</b> lest it infects you."
-	icon_state = "lungs-x"
+	icon_state = "lungs-n4"
 	organ_flags = ORGAN_N4_CORRUPTED
 	maxHealth = 0.20 * STANDARD_ORGAN_THRESHOLD
 
@@ -54,7 +55,8 @@
 	name = "N-4 Rotted Stomach"
 	desc = "A grotesque, N-4-corrupted human stomach, festering with writhing black tendrils. \
 			Its decayed tissue barely processes sustenance, oozing a toxic sludge that carries the Voidplague's curse."
-	icon_state = "stomach-x"
+	icon_state = "stomach-n4"
 	organ_flags = ORGAN_N4_CORRUPTED
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.1
 	metabolism_efficiency = 0.001
+
