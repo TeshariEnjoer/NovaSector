@@ -137,6 +137,8 @@
 
 	return final_icon
 
+/// Change return value to override default MOD module overlay icon file
 /datum/species/proc/get_custom_mod_module_icon()
-	return null
+	return
+
 
