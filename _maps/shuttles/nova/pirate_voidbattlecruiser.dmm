@@ -1,0 +1,1462 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"au" = (
+/obj/structure/reagent_dispensers/fueltank/large{
+	anchored = 1;
+	desc = "A tank full of a high quantity of liquid hydrogen fuel. Keep away from open flames and 57mm mortar shells.";
+	icon_state = "vat"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"cy" = (
+/obj/machinery/light/small/red/directional/north,
+/obj/machinery/cell_charger_multi/wall_mounted/directional/west,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"cF" = (
+/obj/structure/fans/tiny/forcefield{
+	color = "#341539"
+	},
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"cU" = (
+/obj/machinery/light/small/red/directional/north,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	color = "#341539";
+	dir = 1
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"de" = (
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/pirate)
+"dh" = (
+/obj/structure/closet/crate/self,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"do" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"ej" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/button/door/directional/west{
+	id = "voidrockets"
+	},
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"eN" = (
+/obj/machinery/door/airlock/hatch{
+	req_access = null
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"fG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"fT" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"hV" = (
+/obj/machinery/button/door{
+	id = "voidship2";
+	name = "Window Shutters Control";
+	pixel_y = -5
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/pirate)
+"iw" = (
+/obj/structure/rack/shelf,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"kB" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/door/airlock/hatch{
+	req_access = null
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"lt" = (
+/obj/machinery/suit_storage_unit/industrial,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"lK" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "voidrockets"
+	},
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"ms" = (
+/obj/machinery/door/airlock/hatch{
+	req_access = null
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"nk" = (
+/obj/effect/mob_spawn/ghost_role/human/void_raider{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	color = "#341539";
+	dir = 1
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"np" = (
+/obj/machinery/light/floor,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/pirate)
+"ob" = (
+/obj/structure/rack/shelf,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"ou" = (
+/obj/machinery/dish_drive/bullet,
+/obj/structure/table/reinforced/plastitaniumglass,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"oB" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"oI" = (
+/obj/machinery/light/small/red/directional/north,
+/obj/structure/closet/crate/self,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"oY" = (
+/obj/machinery/quantum_server,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"pl" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/poddoor/shutters/window{
+	id = ss;
+	name = "Armory"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"po" = (
+/turf/open/floor/iron/white/smooth_large{
+	color = "#341539";
+	light_color = #9400d3
+	},
+/area/template_noop)
+"pL" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/pirate)
+"rB" = (
+/turf/template_noop,
+/area/template_noop)
+"sQ" = (
+/turf/open/floor/iron/white/smooth_large{
+	color = "#341539";
+	light_color = #9400d3
+	},
+/area/shuttle/pirate)
+"tx" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/table/reinforced/plastitaniumglass,
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"tJ" = (
+/obj/structure/table/reinforced/plastitaniumglass,
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"tT" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/button/door{
+	id = "voidship1";
+	name = "Window Shutters Control";
+	pixel_y = -5
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/pirate)
+"uJ" = (
+/obj/effect/turf_decal/delivery/white{
+	color = "#D381C9"
+	},
+/obj/machinery/light/small/red/directional/north,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"vw" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/pirate)
+"vT" = (
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"xh" = (
+/obj/machinery/power/smes/magical,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/effect/mapping_helpers/apc/cut_AI_wire,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"xR" = (
+/obj/structure/rack/gunrack,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"yp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/shuttle/pirate)
+"yu" = (
+/obj/machinery/door/airlock/hatch{
+	req_access = null
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"yv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/pirate)
+"yW" = (
+/obj/effect/mob_spawn/ghost_role/human/void_raider{
+	dir = 4
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"zB" = (
+/obj/machinery/shieldgen,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"Ae" = (
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"Ar" = (
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny/forcefield{
+	color = "#341539"
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"AV" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "voidship1"
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"Bi" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"CL" = (
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"Dm" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"Dr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/door/airlock/hatch{
+	req_access = null
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"Fl" = (
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"Gr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/shuttle/pirate)
+"GY" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/cell_charger_multi/wall_mounted/directional/west,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/pirate)
+"GZ" = (
+/obj/machinery/light/floor,
+/turf/open/floor/iron/white/smooth_large{
+	color = "#341539";
+	light_color = #9400d3
+	},
+/area/shuttle/pirate)
+"HZ" = (
+/turf/open/floor/catwalk_floor,
+/area/shuttle/pirate)
+"Ik" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	color = "#341539";
+	dir = 1
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"IC" = (
+/obj/structure/closet/crate/self,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"Kj" = (
+/obj/machinery/light/small/red/directional/south,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"KS" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"Lb" = (
+/obj/structure/mirror/magic,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/pirate)
+"LJ" = (
+/obj/machinery/suit_storage_unit/industrial,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"Mu" = (
+/obj/machinery/power/shuttle_engine/large{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"OH" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	color = "#341539";
+	dir = 1
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"Pw" = (
+/obj/machinery/shuttle_scrambler,
+/obj/effect/turf_decal/delivery/white{
+	color = "#D381C9"
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"PC" = (
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/hatch{
+	req_access = null
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"PG" = (
+/obj/machinery/shieldgen,
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"PS" = (
+/obj/machinery/power/shuttle_engine/huge{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"Qt" = (
+/obj/machinery/door/window/survival_pod/left/directional/east,
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"Qw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "voidrockets"
+	},
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"QZ" = (
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny,
+/obj/structure/fans/tiny/forcefield{
+	color = "#341539"
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"RQ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/pirate)
+"Tr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"Ty" = (
+/obj/structure/closet/crate/self,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"TE" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/poddoor/shutters/window{
+	id = "voidship2";
+	name = "Armory"
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"TP" = (
+/mob/living/basic/n4_mutant/leaper,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"Vd" = (
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"Vh" = (
+/turf/open/floor/iron/dark/textured_large/airless,
+/area/shuttle/pirate)
+"VD" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "voidship1"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"Wc" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"Xf" = (
+/obj/machinery/cell_charger_multi/wall_mounted/directional/west,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"Xo" = (
+/obj/machinery/recycler/deathtrap,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"XD" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/closet/crate/self,
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
+"YP" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"YX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+
+(1,1,1) = {"
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+Ae
+Ae
+PS
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+"}
+(2,1,1) = {"
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+Ae
+Ae
+Ae
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+"}
+(3,1,1) = {"
+rB
+rB
+rB
+rB
+rB
+rB
+GZ
+rB
+Ae
+Mu
+Ae
+Ae
+Ae
+Ae
+Mu
+rB
+GZ
+rB
+rB
+rB
+rB
+rB
+rB
+"}
+(4,1,1) = {"
+rB
+rB
+rB
+rB
+rB
+rB
+sQ
+vw
+Ae
+Ae
+Fl
+Fl
+Fl
+Ae
+Ae
+vw
+sQ
+rB
+rB
+rB
+rB
+rB
+rB
+"}
+(5,1,1) = {"
+rB
+rB
+rB
+rB
+de
+de
+sQ
+vw
+vT
+vT
+au
+Qt
+au
+vT
+vT
+vw
+sQ
+de
+de
+rB
+rB
+rB
+rB
+"}
+(6,1,1) = {"
+rB
+de
+de
+de
+sQ
+sQ
+sQ
+vw
+Vd
+Vd
+Vd
+oB
+Vd
+Vd
+Vd
+vw
+sQ
+sQ
+sQ
+de
+de
+de
+rB
+"}
+(7,1,1) = {"
+np
+de
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+Dr
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+de
+np
+"}
+(8,1,1) = {"
+rB
+Vh
+vw
+vw
+CL
+Xf
+CL
+CL
+CL
+hV
+CL
+RQ
+CL
+fT
+nk
+yW
+yW
+CL
+tx
+vw
+vw
+Vh
+rB
+"}
+(9,1,1) = {"
+rB
+rB
+Vh
+vw
+tJ
+iw
+ob
+ou
+do
+pl
+do
+RQ
+CL
+vw
+cU
+HZ
+HZ
+CL
+tx
+vw
+Vh
+rB
+rB
+"}
+(10,1,1) = {"
+rB
+rB
+Vh
+vw
+vw
+oI
+Ty
+XD
+CL
+TE
+CL
+RQ
+do
+PC
+Ik
+RQ
+RQ
+KS
+vw
+vw
+Vh
+rB
+rB
+"}
+(11,1,1) = {"
+rB
+rB
+Vh
+Vh
+vw
+CL
+CL
+CL
+CL
+vw
+uJ
+RQ
+CL
+Lb
+OH
+IC
+dh
+dh
+vw
+Vh
+Vh
+rB
+rB
+"}
+(12,1,1) = {"
+rB
+Vh
+Vh
+de
+vw
+vw
+xR
+xR
+xR
+vw
+Pw
+RQ
+CL
+vw
+vw
+vw
+vw
+vw
+vw
+de
+Vh
+Vh
+rB
+"}
+(13,1,1) = {"
+sQ
+np
+de
+de
+de
+vw
+vw
+vw
+vw
+vw
+tT
+RQ
+do
+do
+yu
+Tr
+Ae
+vw
+de
+de
+de
+np
+sQ
+"}
+(14,1,1) = {"
+rB
+sQ
+sQ
+de
+de
+vw
+cy
+GY
+RQ
+RQ
+VD
+RQ
+CL
+Kj
+vw
+oY
+Ae
+vw
+de
+de
+sQ
+sQ
+rB
+"}
+(15,1,1) = {"
+rB
+rB
+sQ
+sQ
+vw
+vw
+lt
+lt
+LJ
+Dm
+AV
+do
+CL
+CL
+vw
+xh
+Wc
+vw
+vw
+sQ
+sQ
+rB
+rB
+"}
+(16,1,1) = {"
+rB
+rB
+rB
+Vh
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+Dr
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+Vh
+rB
+rB
+rB
+"}
+(17,1,1) = {"
+rB
+rB
+Vh
+Vh
+vw
+Xo
+Ae
+Ae
+vw
+CL
+CL
+do
+CL
+CL
+CL
+CL
+vw
+RQ
+vw
+Vh
+Vh
+rB
+rB
+"}
+(18,1,1) = {"
+rB
+rB
+vw
+vw
+vw
+Ae
+Ae
+Ae
+vw
+CL
+CL
+YX
+CL
+CL
+CL
+CL
+vw
+RQ
+vw
+vw
+vw
+rB
+rB
+"}
+(19,1,1) = {"
+rB
+rB
+vw
+Ae
+vw
+Ae
+Ae
+Ae
+vw
+CL
+RQ
+RQ
+RQ
+RQ
+RQ
+RQ
+eN
+RQ
+Vd
+Vd
+vw
+rB
+rB
+"}
+(20,1,1) = {"
+rB
+vw
+vw
+Ae
+vw
+vw
+ms
+vw
+vw
+CL
+RQ
+CL
+CL
+CL
+CL
+CL
+vw
+RQ
+Vd
+Vd
+vw
+vw
+rB
+"}
+(21,1,1) = {"
+vw
+vw
+zB
+Ae
+Ae
+Ae
+Ae
+Ae
+vw
+CL
+RQ
+CL
+CL
+CL
+CL
+CL
+vw
+yv
+yv
+Vd
+PG
+vw
+vw
+"}
+(22,1,1) = {"
+rB
+vw
+vw
+Ae
+Ae
+Gr
+Gr
+Ae
+vw
+CL
+RQ
+CL
+CL
+CL
+CL
+CL
+vw
+Vd
+RQ
+Vd
+vw
+vw
+rB
+"}
+(23,1,1) = {"
+rB
+de
+vw
+vw
+Ae
+Ae
+Tr
+Tr
+Dr
+do
+yv
+CL
+CL
+TP
+CL
+CL
+vw
+Vd
+RQ
+vw
+vw
+de
+rB
+"}
+(24,1,1) = {"
+sQ
+de
+de
+vw
+Ae
+Ae
+Ae
+Ae
+vw
+CL
+RQ
+CL
+CL
+CL
+CL
+CL
+vw
+Vd
+RQ
+vw
+de
+de
+po
+"}
+(25,1,1) = {"
+rB
+sQ
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+kB
+vw
+vw
+vw
+vw
+vw
+vw
+Vd
+RQ
+vw
+vw
+sQ
+rB
+"}
+(26,1,1) = {"
+rB
+vw
+vw
+Ae
+vw
+Ae
+Ae
+Ae
+Ae
+vw
+Gr
+oB
+oB
+oB
+oB
+oB
+ms
+oB
+RQ
+Vd
+vw
+vw
+rB
+"}
+(27,1,1) = {"
+vw
+vw
+Ae
+Ae
+Ae
+Ae
+Gr
+Ae
+Ae
+vw
+Gr
+Vd
+Vd
+Vd
+Vd
+Vd
+vw
+Vd
+yv
+Vd
+Vd
+vw
+vw
+"}
+(28,1,1) = {"
+rB
+vw
+vw
+vw
+vw
+Ae
+yp
+Tr
+Tr
+Dr
+Gr
+Vd
+Vd
+Vd
+Vd
+Vd
+vw
+oB
+oB
+vw
+vw
+vw
+rB
+"}
+(29,1,1) = {"
+rB
+rB
+rB
+vw
+vw
+Ae
+Ae
+Ae
+Ae
+vw
+Gr
+Vd
+vw
+vw
+vw
+vw
+vw
+Dr
+vw
+vw
+rB
+rB
+rB
+"}
+(30,1,1) = {"
+rB
+rB
+rB
+rB
+vw
+Ae
+vw
+vw
+vw
+vw
+Gr
+Vd
+vw
+Vd
+Vd
+oB
+oB
+YP
+vw
+rB
+rB
+rB
+rB
+"}
+(31,1,1) = {"
+rB
+rB
+rB
+vw
+vw
+Ae
+vw
+Tr
+Gr
+Gr
+yp
+Vd
+vw
+Gr
+Gr
+YP
+Vd
+Vd
+vw
+vw
+rB
+rB
+rB
+"}
+(32,1,1) = {"
+de
+vw
+vw
+vw
+vw
+vw
+vw
+Dr
+vw
+vw
+vw
+vw
+vw
+lK
+lK
+Qw
+vw
+vw
+vw
+vw
+vw
+vw
+de
+"}
+(33,1,1) = {"
+np
+QZ
+Ae
+Ae
+Tr
+fG
+Tr
+Tr
+Ae
+Ae
+Ae
+Ae
+ms
+Vd
+Vd
+oB
+ej
+fG
+Tr
+Ae
+Ae
+Ar
+np
+"}
+(34,1,1) = {"
+de
+vw
+vw
+Ae
+Ae
+vw
+Ae
+Bi
+Gr
+Gr
+Gr
+Gr
+pL
+Gr
+Gr
+yp
+Vd
+vw
+Ae
+Ae
+vw
+vw
+de
+"}
+(35,1,1) = {"
+rB
+rB
+vw
+vw
+vw
+vw
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+vw
+Vd
+Vd
+Vd
+Vd
+vw
+vw
+vw
+vw
+rB
+rB
+"}
+(36,1,1) = {"
+rB
+rB
+rB
+rB
+vw
+vw
+Ae
+Ae
+Ae
+vw
+vw
+vw
+vw
+Vd
+Vd
+Vd
+Ae
+vw
+vw
+rB
+rB
+rB
+rB
+"}
+(37,1,1) = {"
+rB
+rB
+rB
+rB
+rB
+vw
+vw
+Ae
+vw
+vw
+de
+de
+vw
+vw
+Vd
+vw
+vw
+vw
+rB
+rB
+rB
+rB
+rB
+"}
+(38,1,1) = {"
+rB
+rB
+rB
+rB
+rB
+rB
+vw
+vw
+vw
+de
+rB
+de
+de
+vw
+cF
+vw
+de
+de
+rB
+rB
+rB
+rB
+rB
+"}
+(39,1,1) = {"
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+rB
+np
+de
+de
+de
+np
+rB
+rB
+rB
+rB
+rB
+rB
+"}
