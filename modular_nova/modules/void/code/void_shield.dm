@@ -160,7 +160,7 @@ obj/effect/overlay/overlay_charge)
 	animate(current_overlay, alpha = 0, time = 3, easing = SINE_EASING)
 	current_overlay.filters += filter(type="wave", size=12, offset=0)
 	animate(current_overlay.filters[length(current_overlay.filters)], size=0, offset=1, time=3, easing=SINE_EASING)
-	addtimer(CALLBACK(src, PROC_REF(clear_filters), current_overlay), 3)
+	addtimer(CALLBACK(src, PROC_REF(clear_shield_filters), current_overlay), 3)
 
 /datum/component/void_shield/proc/damage_shield_effect()
 	if(!shield_overlay)
@@ -170,9 +170,9 @@ obj/effect/overlay/overlay_charge)
 	animate(shield_overlay.filters[1], size=0, offset=1, time=3, easing=SINE_EASING)
 	animate(shield_overlay, alpha=255, time=1, easing=LINEAR_EASING)
 	animate(alpha=50 + (shield_health / shield_maxhealth * 150), time=3, easing=LINEAR_EASING)
-	addtimer(CALLBACK(src, PROC_REF(clear_filters), shield_overlay), 3)
+	addtimer(CALLBACK(src, PROC_REF(clear_shield_filters), shield_overlay), 3)
 
-/datum/component/void_shield/proc/clear_filters(obj/effect/overlay/target)
+/datum/component/void_shield/proc/clear_shield_filters(obj/effect/overlay/target)
 	if(target)
 		target.filters = null
 
