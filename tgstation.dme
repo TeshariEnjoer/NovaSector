@@ -9253,6 +9253,7 @@
 #include "modular_nova\modules\voice_actor_quirk\code\alter_voice_action.dm"
 #include "modular_nova\modules\voice_actor_quirk\code\voice_actor_preferences.dm"
 #include "modular_nova\modules\voice_actor_quirk\code\voice_actor_quirk.dm"
+#include "modular_nova\modules\void\code\void_shield.dm"
 #include "modular_nova\modules\void\code\items\mod\modules.dm"
 #include "modular_nova\modules\void\code\items\mod\theme.dm"
 #include "modular_nova\modules\void\code\items\organs\auguments.dm"
