@@ -6,7 +6,8 @@
 	color = "#440b49"
 	taste_description = "chemical decay"
 	taste_mult = 1.2
-	chemical_flags = REAGENT_IGNORE_STASIS | REAGENT_DEAD_PROCESS | REAGENT_INVISIBLE
+	chemical_flags = REAGENT_IGNORE_STASIS | REAGENT_INVISIBLE
+	metabolization_rate = REAGENTS_METABOLISM * 15
 	toxpwr = 0
 	liver_damage_multiplier = 0
 	liver_tolerance_multiplier = 0
