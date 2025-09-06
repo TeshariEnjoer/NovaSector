@@ -17,8 +17,8 @@
 	form = "Bioengineered Disease"
 	agent = "N-4 spores"
 	visibility_flags = HIDDEN_SCANNER | HIDDEN_PANDEMIC
-	infectivity = 22
-	stage_prob = 0.5
+	spread_flags = DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_BLOOD
+	stage_prob = 0.7
 	max_stages = 7
 	spread_text = "Unknown"
 	viable_mobtypes = list(/mob/living/carbon/human)
@@ -33,7 +33,7 @@
 
 
 	COOLDOWN_DECLARE(organ_failure)
-	var/passed_full_absorbation = FALSE
+	var/pass_final_stage = FALSE
 	var/transformation = FALSE
 	var/total_pulses = 0
 
@@ -42,11 +42,12 @@
 	. = ..()
 	if(new_stage == 4)
 		to_chat(affected_mob, span_userdanger("Something writhes inside you, clawing at your flesh!"))
-		update_spread_flags(HIDDEN_SCANNER)
+		visibility_flags = HIDDEN_SCANNER
 		spreading_modifier = spreading_modifier * 0.3
 		damage_random_organ(15)
+		stage_prob = 1
 	else if(new_stage == 5)
-		update_spread_flags(NONE)
+		visibility_flags = NONE
 		infect_organ(ORGAN_SLOT_LUNGS)
 
 /datum/disease/n4/stage_act(seconds_per_tick, times_fired)
@@ -58,54 +59,61 @@
 		return transformation_tick(seconds_per_tick)
 
 	// Passing all symptoms due to the final breath
-	if(passed_full_absorbation)
+	if(pass_final_stage)
 		return TRUE
 	switch(stage)
 		if(1)
-			if(SPT_PROB(0.8, seconds_per_tick))
+			if(SPT_PROB(0.9, seconds_per_tick))
 				affected_mob.emote("cough")
-			if(SPT_PROB(1, seconds_per_tick))
+			if(SPT_PROB(1.4, seconds_per_tick))
 				to_chat(affected_mob, span_warning("A faint pain pulses deep within your core."))
 
 		if(2)
-			if(SPT_PROB(1.5, seconds_per_tick))
+			if(SPT_PROB(3.4, seconds_per_tick))
 				to_chat(affected_mob, span_warning("A sharp ache gnaws at your insides."))
 
 		if(3)
-			if(SPT_PROB(2, seconds_per_tick))
+			if(SPT_PROB(4.8, seconds_per_tick))
 				to_chat(affected_mob, span_warning("Searing pain courses through your body!"))
 
 		if(4)
 			if(SPT_PROB(3, seconds_per_tick))
-				to_chat(affected_mob, span_userdanger("Your flesh writhes as organs begin to decay!"))
+				to_chat(affected_mob, span_warning("Your flesh writhes as organs begin to decay!"))
+				damage_random_organ(rand(7-6))
 
 		if(5)
 			if(SPT_PROB(5, seconds_per_tick))
 				to_chat(affected_mob, span_userdanger("Your organs collapse, consumed by festering rot!"))
-				damage_random_organ()
+				damage_random_organ(2)
 
-			if(SPT_PROB(2.5, seconds_per_tick) & spread_miasma())
+			if(SPT_PROB(2.5, seconds_per_tick))
 				to_chat(affected_mob, span_danger("Your breath unleashes a deadly miasma!"))
+				spread_miasma()
 		if(6)
 			if(SPT_PROB(0.3, seconds_per_tick))
 				infect_organ()
 
-			if(SPT_PROB(3, seconds_per_tick) && total_infected_organs() >= 2)
-				affected_mob.adjustBruteLoss(rand(3, 5), FALSE)
+			if(SPT_PROB(3, seconds_per_tick) && total_infected_organs() >= 1)
+				affected_mob.adjustBruteLoss(rand(2, 3), FALSE)
 				affected_mob.vomit(VOMIT_CATEGORY_BLOOD)
 
 			if(SPT_PROB(5, seconds_per_tick))
 				to_chat(affected_mob, span_userdanger("Your organs fester, crumbling under decay!"))
 				damage_random_organ()
 
-			if(SPT_PROB(2, seconds_per_tick) && spread_miasma())
+			if(SPT_PROB(1.2, seconds_per_tick))
 				to_chat(affected_mob, span_danger("A toxic miasma escapes your lungs!"))
+				spread_miasma()
 
 		if(7)
 			if(SPT_PROB(3, seconds_per_tick) && total_infected_organs() >= 2)
 				affected_mob.adjustBruteLoss(rand(4, 8), FALSE)
 				affected_mob.vomit(VOMIT_CATEGORY_BLOOD)
 				to_chat(affected_mob, span_userdanger("Your flesh erupts, consumed by the plague!"))
+
+			if(SPT_PROB(2, seconds_per_tick))
+				to_chat(affected_mob, span_danger("Your breath unleashes a deadly miasma!"))
+				spread_miasma()
 
 			if(total_infected_organs() <= 3)
 				infect_organ()
@@ -114,9 +122,9 @@
 			to_chat(affected_mob, span_notice("The plague seems to fade, but your rotting organs shudder with \
 				their final, deceitful breaths!"))
 
-			update_spread_flags(HIDDEN_SCANNER | HIDDEN_PANDEMIC)
-			passed_full_absorbation = TRUE
-			addtimer(CALLBACK(src, PROC_REF(pass_final_stage)), N4_FINAL_BREATH, (TIMER_UNIQUE|TIMER_OVERRIDE))
+			visibility_flags = HIDDEN_SCANNER | HIDDEN_PANDEMIC
+			pass_final_stage = TRUE
+			addtimer(CALLBACK(src, PROC_REF(enter_transformation)), N4_FINAL_BREATH, (TIMER_UNIQUE|TIMER_OVERRIDE))
 
 
 /datum/disease/n4/proc/transformation_tick(seconds_per_tick)
@@ -135,11 +143,11 @@
 	if(total_infected_organs() > 0)
 		return
 
-	if(passed_full_absorbation)
+	if(pass_final_stage)
 		return
 	return ..()
 
-/datum/disease/n4/proc/pass_final_stage()
+/datum/disease/n4/proc/enter_transformation()
 	to_chat(affected_mob, span_userdanger("Your flesh erupts, consumed by the N-4 Voidplague!"))
 	affected_mob.visible_message(
 		span_smalldanger("[affected_mob]'s flesh tears apart, their body convulsing and numbing as a monstrous form begins to emerge!"))
@@ -150,7 +158,7 @@
 /datum/disease/n4/proc/get_affected_possible_organs()
 	var/list/possible_organs = list()
 	for(var/obj/item/organ/o in affected_mob.organs)
-		if(o.organ_flags & ORGAN_ORGANIC && !(o.organ_flags & ORGAN_N4_CORRUPTED))
+		if(o.organ_flags & ORGAN_ORGANIC && !HAS_TRAIT(o, ORGAN_N4_CORRUPTED))
 			possible_organs += o
 	if(length(possible_organs) == 0)
 		return
@@ -159,7 +167,7 @@
 /datum/disease/n4/proc/total_infected_organs()
 	var/total = 0
 	for(var/obj/item/organ/o in N4_INFECTED_ORGANS)
-		if(o.organ_flags & ORGAN_N4_CORRUPTED)
+		if(HAS_TRAIT(o, ORGAN_N4_CORRUPTED))
 			total++
 	return total
 
@@ -170,21 +178,21 @@
 	if(!o)
 		return
 	if(damage == 0)
-		damage = rand(2, 5)
+		damage = rand(2, 12)
 	o.apply_organ_damage(damage)
 
 /datum/disease/n4/proc/spread_miasma()
 	var/obj/item/organ/lungs/lungs = affected_mob.get_organ_slot(ORGAN_SLOT_LUNGS)
-	if(!lungs || !(lungs.organ_flags & ORGAN_N4_CORRUPTED))
+	if(!lungs || !HAS_TRAIT(lungs, ORGAN_N4_CORRUPTED))
 		return FALSE
 
-	var/datum/reagents/reagents = new/datum/reagents(TEMP_REAGENT_HOLDER_CAPACITY_SMALL)
+	var/datum/reagents/reagents = new(15)
 	reagents.my_atom = affected_mob
-	gents.add_reagent(/datum/reagent/toxin/n4, 15)
+	reagents.add_reagent(/datum/reagent/toxin/n4, 15)
 	var/datum/effect_system/fluid_spread/smoke/chem/smoke = new()
-	smoke.set_up(rand(1, 3), holder = affected_mob, location = get_turf(affected_mob), carry = reagents)
+	smoke.set_up(1, holder = affected_mob, location = get_turf(affected_mob), carry = reagents)
 	smoke.start()
-	affected_mob.emote("Cough")
+	affected_mob.emote("cough")
 	return TRUE
 
 /datum/disease/n4/proc/infect_organ(slot)
@@ -212,7 +220,7 @@
 		qdel(to_insert)
 		return
 
-	to_chat(affected_mob, span_userdanger("Your [to_replace.name] rots from within, writhing with N-4 decay!"))
+	to_chat(affected_mob, span_userdanger("Your [to_replace.name] rots from within, writhing with decay!"))
 	to_insert.Insert(affected_mob, TRUE, DELETE_IF_REPLACED)
 	COOLDOWN_START(src, organ_failure, 25 SECONDS)
 	affected_mob.vomit(VOMIT_CATEGORY_BLOOD)
