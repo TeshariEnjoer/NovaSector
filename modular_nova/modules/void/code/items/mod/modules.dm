@@ -17,18 +17,12 @@
 	incompatible_modules = list(/obj/item/mod/module/energy_shield,
 								/obj/item/mod/module/void/energy_shield)
 	required_slots = list(ITEM_SLOT_BACK)
-
-	var/static/list/shield_layers = list(
-		/obj/effect/overlay/void_shield
-	)
-
+	// Maximum health of shield
 	var/shield_health = 250
-
 	// Maximum damage that shield can tank at hit
-	var/damage_threshold = 100
-
+	var/damage_threshold = 60
+	// Shield recharge time
 	var/recharge_time = 10 SECONDS
-
 
 
 /obj/item/mod/module/void/energy_shield/on_part_activation()
@@ -61,7 +55,7 @@
 )
 	SIGNAL_HANDLER
 
-	if(mod.hit_reaction(owner, hitby, attack_text, 0, damage, attack_type) && attack_type != MELEE_ATTACK)
+	if(mod.hit_reaction(owner, hitby, attack_text, 0, damage, attack_type) && attack_type != MELEE_ATTACK && damage_type != BURN)
 		drain_power(use_energy_cost)
 		return SUCCESSFUL_BLOCK
 	return NONE

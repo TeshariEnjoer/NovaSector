@@ -1,22 +1,28 @@
 /obj/effect/overlay/void_shield
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	vis_flags = VIS_INHERIT_DIR | VIS_INHERIT_PLANE
+	vis_flags = VIS_INHERIT_DIR | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-grey"
 	layer = ABOVE_ALL_MOB_LAYER
 
 /obj/effect/overlay/void_shield_recharge
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	vis_flags = VIS_INHERIT_DIR | VIS_INHERIT_PLANE
+	vis_flags = VIS_INHERIT_DIR | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-flash"
-	layer = ABOVE_ALL_MOB_LAYER
+	layer = ABOVE_ALL_MOB_LAYER + 0.1
+
 
 /datum/component/void_shield
+	// A current health of the shield
 	var/shield_health = 0
+	// Maximum health of the shield
 	var/shield_maxhealth = 150
+	// Is shield enabled
 	var/enabled = FALSE
+	// Time shield need to stay still to begin recharging
 	var/evade_time = 5 SECONDS
+	// Is shield recharging
 	var/recharging = FALSE
 	var/affect_emp = TRUE
 	var/emp_damage = 50
@@ -28,7 +34,7 @@
 	///how long before the shield can regenerate
 	var/regeneration_time
 
-
+	COOLDOWN_DECLARE(after_damage_cooldown)
 	COOLDOWN_DECLARE(shield_recharge_cooldown)
 
 	var/obj/effect/overlay/current_overlay
@@ -41,7 +47,7 @@
 
 /datum/component/void_shield/Initialize(shield_maxhealth, \
 damage_threshold = 150, \
-evade_time = 5 SECONDS, \
+evade_time = 3 SECONDS, \
 regeneration_time = 15 SECONDS, \
 affect_emp = TRUE, \
 emp_damage = 50, \
@@ -75,7 +81,7 @@ obj/effect/overlay/overlay_charge)
 	if(affect_emp)
 		RegisterSignal(parent, COMSIG_ATOM_EMP_ACT, PROC_REF(on_emp_act))
 	RegisterSignal(parent, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(block_attack))
-	START_PROCESSING(SSprocessing, src)
+	START_PROCESSING(SSdcs, src)
 
 
 /datum/component/void_shield/UnregisterFromParent()
@@ -87,7 +93,7 @@ obj/effect/overlay/overlay_charge)
 	living_parent.vis_contents -= recharge_overlay
 	qdel(shield_overlay)
 	qdel(recharge_overlay)
-	STOP_PROCESSING(SSprocessing, src)
+	STOP_PROCESSING(SSdcs, src)
 
 /datum/component/void_shield/proc/on_emp_act(severity)
 	SIGNAL_HANDLER
@@ -103,7 +109,11 @@ obj/effect/overlay/overlay_charge)
 	if(shield_health == 0 || damage >= damage_threshold)
 		break_shield()
 		return FALSE
-	inrto_cooldown(evade_time)
+
+	if(!COOLDOWN_FINISHED(src, after_damage_cooldown))
+		COOLDOWN_RESET(src, after_damage_cooldown)
+	else
+		COOLDOWN_START(src, after_damage_cooldown, evade_time)
 	return TRUE
 
 /datum/component/void_shield/proc/block_attack(
@@ -120,6 +130,9 @@ obj/effect/overlay/overlay_charge)
 		return NONE
 	if(attack_type == MELEE_ATTACK && ranged_only)
 		return NONE
+	if(damage_type == BURN) //Lasers go trough shield
+		damage_shield_effect()
+		return SUCCESSFUL_BLOCK
 	if(!handle_shield_damage(damage))
 		return NONE
 	playsound(get_turf(parent), 'sound/items/weapons/tap.ogg', 20)
@@ -134,7 +147,9 @@ obj/effect/overlay/overlay_charge)
 	COOLDOWN_INCREMENT(src, shield_recharge_cooldown, time)
 
 /datum/component/void_shield/process(seconds_per_tick)
-	if(shield_health >= shield_maxhealth || !COOLDOWN_FINISHED(src, shield_recharge_cooldown))
+	if(shield_health >= shield_maxhealth || \
+		!COOLDOWN_FINISHED(src, shield_recharge_cooldown) || \
+		!COOLDOWN_FINISHED(src, after_damage_cooldown))
 		return
 	if(!recharging)
 		living_parent.balloon_alert(living_parent, "Shield recharging!")
@@ -151,8 +166,9 @@ obj/effect/overlay/overlay_charge)
 /datum/component/void_shield/proc/break_shield()
 	enabled = FALSE
 	brake_shield_effect()
-	inrto_cooldown(regeneration_time)
 	new /obj/effect/temp_visual/cosmic_explosion(get_turf(parent))
+	playsound(get_turf(parent), 'sound/effects/glass/glassbr3.ogg', 50, TRUE)
+	COOLDOWN_START(src, shield_recharge_cooldown, regeneration_time)
 
 /datum/component/void_shield/proc/brake_shield_effect()
 	if(!current_overlay)
@@ -167,8 +183,8 @@ obj/effect/overlay/overlay_charge)
 		return
 	shield_overlay.clear_filters()
 	shield_overlay.filters += filter(type="wave", size=8, offset=0)
-	animate(shield_overlay.filters[1], size=0, offset=1, time=3, easing=SINE_EASING)
-	animate(shield_overlay, alpha=255, time=1, easing=LINEAR_EASING)
+	animate(shield_overlay.filters[1], size=0, offset=3, time=3, easing=SINE_EASING)
+	animate(shield_overlay, alpha=255, time=2, easing=LINEAR_EASING)
 	animate(alpha=50 + (shield_health / shield_maxhealth * 150), time=3, easing=LINEAR_EASING)
 	addtimer(CALLBACK(src, PROC_REF(clear_shield_filters), shield_overlay), 3)
 
@@ -191,7 +207,7 @@ obj/effect/overlay/overlay_charge)
 	var/target_color
 	if(status >= 0.7)
 		target_color = COLOR_VIOLET
-	else if(status >= 0.3)
+	else if(status >= 0.4)
 		target_color = COLOR_YELLOW
 	else if(status >= 0.01)
 		target_color = COLOR_RED
@@ -199,6 +215,4 @@ obj/effect/overlay/overlay_charge)
 		target_color = COLOR_WHITE
 
 	if(current_overlay)
-		var/target_alpha = 50 + (status * 150)
-		animate(current_overlay, color = target_color, time = 7, easing = LINEAR_EASING)
-		animate(current_overlay, alpha = target_alpha, time = 3, easing = LINEAR_EASING)
+		animate(current_overlay, color = target_color, time = 3, easing = LINEAR_EASING)
