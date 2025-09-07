@@ -1,0 +1,6 @@
+#define BB_N4_MUTANT_CONSUME "n4_mutant_consume"
+#define BB_MINIMUM_VIEW_DISTANCE "bb_minimum_view_distance"
+#define BB_CONSUME_LIMBS_CURRENT "bb_consume_limbs_current"
+#define BB_CONSUME_LIMBS_MAX "bb_consume_limbs_max"
+#define BB_LAST_TARGET_TIME "bb_last_target_time"
+#define BB_EXTENDED_HUNT_RANGE "bb_extended_hunt_range"

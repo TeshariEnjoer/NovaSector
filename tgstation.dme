@@ -497,6 +497,7 @@
 #include "code\__DEFINES\~nova_defines\traits.dm"
 #include "code\__DEFINES\~nova_defines\turfs.dm"
 #include "code\__DEFINES\~nova_defines\vehicles.dm"
+#include "code\__DEFINES\~nova_defines\void.dm"
 #include "code\__DEFINES\~nova_defines\vox_defines.dm"
 #include "code\__DEFINES\~nova_defines\vv.dm"
 #include "code\__DEFINES\~nova_defines\wounds.dm"

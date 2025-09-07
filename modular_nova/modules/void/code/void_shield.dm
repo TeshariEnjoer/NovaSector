@@ -110,10 +110,7 @@ obj/effect/overlay/overlay_charge)
 		break_shield()
 		return FALSE
 
-	if(!COOLDOWN_FINISHED(src, after_damage_cooldown))
-		COOLDOWN_RESET(src, after_damage_cooldown)
-	else
-		COOLDOWN_START(src, after_damage_cooldown, evade_time)
+	COOLDOWN_START(src, after_damage_cooldown, evade_time)
 	return TRUE
 
 /datum/component/void_shield/proc/block_attack(
@@ -132,7 +129,7 @@ obj/effect/overlay/overlay_charge)
 		return NONE
 	if(damage_type == BURN) //Lasers go trough shield
 		damage_shield_effect()
-		return SUCCESSFUL_BLOCK
+		return NONE
 	if(!handle_shield_damage(damage))
 		return NONE
 	playsound(get_turf(parent), 'sound/items/weapons/tap.ogg', 20)
