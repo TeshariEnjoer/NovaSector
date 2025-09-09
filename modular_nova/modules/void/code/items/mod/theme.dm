@@ -3,10 +3,12 @@
 
 
 /obj/item/mod/control/pre_equipped/void
-	applied_cell = /obj/item/stock_parts/power_store/cell/hyper
+	applied_cell = /obj/item/stock_parts/power_store/cell/bluespace
 	theme = /datum/mod_theme/void_combat
-
-
+	default_pins = list(
+		/obj/item/mod/module/void/reactive_scaner,
+		/obj/item/mod/module/void/cloak
+	)
 
 /datum/mod_theme/void_combat
 	name = "Voidtech Reactive"
@@ -23,7 +25,7 @@
 	armor_type = /datum/armor/mod_theme_void_combat
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
 	complexity_max = DEFAULT_MAX_COMPLEXITY + 10
-	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	siemens_coefficient = 0
 	slowdown_deployed = 0
 	ui_theme = "syndicate"
@@ -32,7 +34,8 @@
 		/obj/item/mod/module/welding/syndicate,
 		/obj/item/mod/module/hearing_protection,
 		/obj/item/mod/module/void/energy_shield,
-		/obj/item/mod/module/void/cloak
+		/obj/item/mod/module/void/reactive_scaner,
+		/obj/item/mod/module/void/cloak,
 	)
 	allowed_suit_storage = list(
 		/obj/item/restraints/handcuffs,

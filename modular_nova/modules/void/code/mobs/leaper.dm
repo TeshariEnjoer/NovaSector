@@ -31,11 +31,11 @@
 /datum/ai_controller/basic_controller/n4_mutant/leaper
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/escape_captivity,
-		/datum/ai_planning_subtree/extended_find_distance_target,
-		/datum/ai_planning_subtree/targeted_mob_ability/tongue_grab,
-		/datum/ai_planning_subtree/targeted_mob_ability/consume_limbs,
+		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/attack_obstacle_in_path,
+		/datum/ai_planning_subtree/targeted_mob_ability/tongue_grab,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
+		/datum/ai_planning_subtree/targeted_mob_ability/consume_limbs,
 	)
 
 	movement_delay = 0.3 SECONDS
@@ -43,6 +43,16 @@
 /datum/ai_planning_subtree/targeted_mob_ability/tongue_grab
 	ability_key = BB_N4_LERAPER_TONGUE_GRAB
 	finish_planning = FALSE
+
+/datum/ai_planning_subtree/targeted_mob_ability/tongue_grab/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+	var/mob/living/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	if(!target)
+		return
+	var/mob/living/pawn = controller.pawn
+	if(get_dist(target, pawn) <= 3)
+		return
+	..()
+
 
 /datum/action/cooldown/mob_cooldown/projectile_attack/tongue_grab
 	name = "Tongue grab"

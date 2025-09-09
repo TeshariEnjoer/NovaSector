@@ -6,8 +6,9 @@
 /obj/item/organ/heart/cybernetic/voidtech
 	name = "Voidtech Duskheart"
 	desc = "A sinister Voidtech construct pulsing with unnatural energy, designed to supplant an organic heart. Its dark machinery hums with relentless efficiency, infused with traces of N-4 viral essence."
-	icon_state = "heart-c-on"
-	base_icon_state = "heart-c"
+	icon = 'modular_nova/modules/void/icons/items/organs.dmi'
+	icon_state = "heart-vt-on"
+	base_icon_state = "heart-vt"
 	organ_flags = ORGAN_ROBOTIC
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 2
 	failing_desc = "emits a faint, eerie whine, its mechanisms faltering."
@@ -37,7 +38,8 @@
 	desc = "A pair of sinister Voidtech constructs that replace organic lungs, pulsing with dark, N-4-infused mechanisms. \
 			They hum with an eerie efficiency, sustaining life through unnatural means."
 	failing_desc = "emits a faint, rasping hiss, its dark machinery stuttering."
-	icon_state = "lungs-c"
+	icon = 'modular_nova/modules/void/icons/items/organs.dmi'
+	icon_state = "lungs-vt"
 	breath_noise = "a low, unsettling hum interspersed with sharp clicks"
 	organ_flags = ORGAN_ROBOTIC
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 2
@@ -57,7 +59,8 @@
 	desc = "Sinister Voidtech eye implants that pierce the darkness with thermal vision, \
 			their slit apertures glowing with an unnatural crimson hue, \
 			they reveal the world in a haunting purple twilight."
-	icon_state = "eyes_cyber_thermal"
+	icon = 'modular_nova/modules/void/icons/items/organs.dmi'
+	icon_state = "eyes-vt"
 	iris_overlay = null
 	eye_color_left = "#5c05ce"
 	eye_color_right = "#5c05ce"
@@ -73,7 +76,8 @@
 	desc = "A foreboding Voidtech organ that mimics a human liver, infused with N-4 viral traces. \
 			Its dark machinery processes toxins with ruthless precision, though slightly less effectively than its organic counterpart."
 	failing_desc = "emits a low, grinding hum, its sinister mechanisms faltering."
-	icon_state = "liver-c"
+	icon = 'modular_nova/modules/void/icons/items/organs.dmi'
+	icon_state = "liver-vt"
 	organ_flags = ORGAN_ROBOTIC
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 2
 
@@ -95,7 +99,8 @@
 	desc = "A menacing Voidtech construct designed to replicate a human stomach, infused with N-4 viral essence. \
 			Its dark mechanisms churn with unsettling precision, processing sustenance with cold efficiency."
 	failing_desc = "emits a faint, guttural whir, its ominous machinery stalling."
-	icon_state = "stomach-c"
+	icon_state = "stomach-vt"
+	icon = 'modular_nova/modules/void/icons/items/organs.dmi'
 	organ_flags = ORGAN_ROBOTIC
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 1.5
 	metabolism_efficiency = 0.025

@@ -10,7 +10,7 @@
 					brief recharges between activations, a grim testament to the fleeting mortality of its wielder. \
 					A faint, ominous hum resonates from within, heralding V.O.I.D.'s unyielding dominance."
 	icon_state = "energy_shield"
-	complexity = 0
+	complexity = 5
 	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.5
 	use_energy_cost = DEFAULT_CHARGE_DRAIN * 2
 	removable = FALSE
@@ -22,7 +22,7 @@
 	// Maximum damage that shield can tank at hit
 	var/damage_threshold = 60
 	// Shield recharge time
-	var/recharge_time = 10 SECONDS
+	var/recharge_time = 15 SECONDS
 
 
 /obj/item/mod/module/void/energy_shield/on_part_activation()
@@ -55,7 +55,8 @@
 )
 	SIGNAL_HANDLER
 
-	if(mod.hit_reaction(owner, hitby, attack_text, 0, damage, attack_type) && attack_type != MELEE_ATTACK && damage_type != BURN)
+	if(mod.hit_reaction(owner, hitby, attack_text, 0, damage, attack_type) && \
+			attack_type != MELEE_ATTACK && attack_type != UNARMED_ATTACK && damage_type != BURN)
 		drain_power(use_energy_cost)
 		return SUCCESSFUL_BLOCK
 	return NONE
@@ -81,5 +82,31 @@
 	icon_state = "cloak_traitor"
 	complexity = 0
 	removable = FALSE
+	module_type = MODULE_ACTIVE
 	incompatible_modules = list(/obj/item/mod/module/void/cloak)
+	device = /obj/item/clothing/neck/cloak/void
 	required_slots = list(ITEM_SLOT_NECK)
+
+/obj/item/clothing/neck/cloak/void
+	name = "Shadowveil Cloak"
+	desc = "It's a cape that can be worn around your neck."
+	icon = 'modular_nova/modules/void/icons/items/void_clothing.dmi'
+	worn_icon = 'modular_nova/modules/void/icons/clothing/void_clothing.dmi'
+	icon_state = "void_cloak"
+	worn_icon_state = "void_cloak"
+	damaged_clothes = CLOTHING_PRISTINE
+	resistance_flags = FIRE_PROOF|LAVA_PROOF|ACID_PROOF
+	inhand_icon_state = null
+	w_class = WEIGHT_CLASS_SMALL
+	body_parts_covered = HEAD|CHEST|GROIN|LEGS|ARMS
+	flags_inv = HIDESUITSTORAGE|HIDEHAIR|HIDEHEADGEAR|HIDEFACE
+
+
+/obj/item/mod/module/void/reactive_scaner
+	name = "VOIDTECH Reactive Scaner"
+	icon_state = "scaner"
+	module_type = MODULE_TOGGLE
+	overlay_state_active = "scaner-on"
+	overlay_state_inactive = "scaner-off"
+	incompatible_modules = list(/obj/item/mod/module/void/reactive_scaner)
+	complexity = 3

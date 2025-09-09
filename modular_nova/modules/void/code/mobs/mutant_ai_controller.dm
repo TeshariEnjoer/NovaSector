@@ -15,8 +15,8 @@
 		/datum/ai_planning_subtree/escape_captivity,
 		/datum/ai_planning_subtree/extended_find_distance_target,
 		/datum/ai_planning_subtree/attack_obstacle_in_path,
-		/datum/ai_planning_subtree/targeted_mob_ability/consume_limbs,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/mutant,
+		/datum/ai_planning_subtree/targeted_mob_ability/consume_limbs,
 	)
 	movement_delay = 0.3 SECONDS
 
@@ -28,7 +28,7 @@
 /datum/ai_planning_subtree/extended_find_distance_target/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
 	if(world.time <= controller.blackboard[BB_LAST_TARGET_TIME] + extended_delay)
-		controller.queue_behavior(/datum/ai_behavior/find_potential_targets/most_wounded, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETING_STRATEGY, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
+		controller.queue_behavior(/datum/ai_behavior/find_potential_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETING_STRATEGY, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 		return
 
 	search_range = controller.blackboard[BB_EXTENDED_HUNT_RANGE]
@@ -78,42 +78,9 @@
 
 
 
-
-
-// В finish_action для melee_attack или других behaviors, добавьте при потере цели:
-	// if(!succeeded)
-	// 	controller.blackboard[BB_LAST_TARGET_TIME] = world.time
-
-// Abilites
-
-/datum/ai_planning_subtree/targeted_mob_ability/consume_limbs
-	ability_key = BB_N4_MUTANT_CONSUME
-	finish_planning = FALSE
-
-/datum/ai_planning_subtree/targeted_mob_ability/consume_limbs/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
-	var/mob/living/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
-	if(!target)
-		return
-	if(get_dist(controller.pawn, target) > 1)
-		return
-
-	var/is_downed = (target.stat != CONSCIOUS)
-	var/current_count = controller.blackboard[BB_CONSUME_LIMBS_CURRENT]
-	var/max_count = controller.blackboard[BB_CONSUME_LIMBS_MAX]
-
-	if(is_downed && current_count < max_count)
-		controller.queue_behavior(/datum/ai_behavior/targeted_mob_ability, ability_key, BB_BASIC_MOB_CURRENT_TARGET)
-		var/new_val = controller.blackboard[BB_CONSUME_LIMBS_CURRENT] + 1
-		controller.set_blackboard_key(BB_CONSUME_LIMBS_CURRENT, new_val)
-		return
-	else if(is_downed && current_count >= max_count)
-		controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
-		controller.blackboard[BB_CONSUME_LIMBS_CURRENT] = 0
-		return
-
-
 /datum/ai_planning_subtree/basic_melee_attack_subtree/mutant
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/after_distant_find
+	end_planning = FALSE
 
 /datum/ai_behavior/basic_melee_attack/after_distant_find
 
@@ -122,3 +89,6 @@
 	. = ..()
 	if(!succeeded)
 		controller.blackboard[BB_LAST_TARGET_TIME] = world.time
+
+
+

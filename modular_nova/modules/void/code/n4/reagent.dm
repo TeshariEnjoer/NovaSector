@@ -12,7 +12,7 @@
 	liver_damage_multiplier = 0
 	liver_tolerance_multiplier = 0
 	silent_toxin = TRUE
-	penetrates_skin = INHALE
+	penetrates_skin = SMOKE_MACHINE
 
 /datum/reagent/toxin/n4/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -24,7 +24,7 @@
 		return
 	if(affected_mob.reagents.has_reagent(/datum/reagent/medicine/spaceacillin))
 		return
-	if(SPT_PROB(30, seconds_per_tick))
+	if(SPT_PROB(40, seconds_per_tick))
 		affected_mob.emote("Cough")
-	if(SPT_PROB(15, seconds_per_tick) && !affected_mob.HasDisease(/datum/disease/n4))
+	if(SPT_PROB(15, seconds_per_tick))
 		affected_mob.ForceContractDisease(new /datum/disease/n4(), FALSE, TRUE)

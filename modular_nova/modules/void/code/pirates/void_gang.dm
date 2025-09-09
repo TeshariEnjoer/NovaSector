@@ -53,3 +53,46 @@
 	restricted_species = list(/datum/species/human, /datum/species/teshari)
 	random_appearance = FALSE
 	show_flavor = TRUE
+
+
+/datum/map_template/shuttle/pirate/nri_raider
+	prefix = "_maps/shuttles/nova/"
+	suffix = "voidbattlecruiser"
+	name = "pirate ship (V.O.I.D liquidator)"
+
+
+/obj/docking_port/mobile/pirate/void
+	name = "V.O.I.D. liquidator"
+	initial_engine_power = 6
+	port_direction = EAST
+	preferred_direction = EAST
+	callTime = 1 MINUTES
+	rechargeTime = 2 MINUTES
+	movement_force = list("KNOCKDOWN"=5,"THROW"=10)
+	can_move_docking_ports = TRUE
+	takeoff_sound = sound('modular_nova/modules/encounters/sounds/engine_ignit_int.ogg')
+	landing_sound = sound('modular_nova/modules/encounters/sounds/env_ship_down.ogg')
+
+
+/area/shuttle/pirate/void
+	name = "V.O.I.D Starship"
+	forced_ambience = TRUE
+	ambient_buzz = 'modular_nova/modules/encounters/sounds/amb_ship_01.ogg'
+	ambient_buzz_vol = 15
+	ambientsounds = list('modular_nova/modules/encounters/sounds/alarm_radio.ogg',
+						'modular_nova/modules/encounters/sounds/alarm_small_09.ogg',
+						'modular_nova/modules/encounters/sounds/gear_loop.ogg',
+						'modular_nova/modules/encounters/sounds/gear_start.ogg',
+						'modular_nova/modules/encounters/sounds/gear_stop.ogg',
+						'modular_nova/modules/encounters/sounds/intercom_loop.ogg')
+
+
+// Real
+/obj/structure/steps/no_knockdown
+	name = "safe steps"
+	desc = "A small set of steps you can use to reach high shelves or climb onto platforms, you don't need to watch your ankles."
+
+/obj/structure/steps/no_knockdown/on_enter()
+	return
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/steps/no_knockdown, 0)

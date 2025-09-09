@@ -37,7 +37,7 @@
 	)
 	grant_actions_by_list(innate_actions)
 
-
+	ADD_TRAIT(src, TRAIT_STRENGTH, INNATE_TRAIT)
 
 // Evolved version of mutants
 
@@ -55,14 +55,13 @@
 	obj_damage = 100
 
 	maximum_survivable_temperature = INFINITY
-	habitable_atmos = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 
 	melee_attack_cooldown = 2 SECONDS
 	armour_penetration = 50
 	melee_damage_upper = 60
 	melee_damage_lower = 40
 	wound_bonus = DISMEMBER_MINIMUM_DAMAGE
-
+	unsuitable_atmos_damage = 0
 
 	pixel_x = -32
 	pixel_y = -32
@@ -171,3 +170,15 @@
 		)
 
 	return TRUE
+
+/datum/ai_planning_subtree/targeted_mob_ability/consume_limbs
+	ability_key = BB_N4_MUTANT_CONSUME
+	finish_planning = TRUE
+
+/datum/ai_planning_subtree/targeted_mob_ability/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+	var/mob/living/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	if(!target || !iscarbon(target) || target.stat == CONSCIOUS)
+		return
+	..()
+
+

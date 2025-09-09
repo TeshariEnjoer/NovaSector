@@ -1,15 +1,15 @@
 /obj/effect/overlay/void_shield
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = VIS_INHERIT_DIR | VIS_INHERIT_PLANE | VIS_INHERIT_ID
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "shield-grey"
+	icon = 'modular_nova/modules/void/icons/effects/shield.dmi'
+	icon_state = "shield_on"
 	layer = ABOVE_ALL_MOB_LAYER
 
 /obj/effect/overlay/void_shield_recharge
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = VIS_INHERIT_DIR | VIS_INHERIT_PLANE | VIS_INHERIT_ID
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "shield-flash"
+	icon = 'modular_nova/modules/void/icons/effects/shield.dmi'
+	icon_state = "shield_charge"
 	layer = ABOVE_ALL_MOB_LAYER + 0.1
 
 
@@ -125,7 +125,7 @@ obj/effect/overlay/overlay_charge)
 )
 	if(!enabled)
 		return NONE
-	if(attack_type == MELEE_ATTACK && ranged_only)
+	if(attack_type == MELEE_ATTACK || attack_type == UNARMED_ATTACK && ranged_only)
 		return NONE
 	if(damage_type == BURN) //Lasers go trough shield
 		damage_shield_effect()
