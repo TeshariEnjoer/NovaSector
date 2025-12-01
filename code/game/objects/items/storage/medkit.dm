@@ -28,6 +28,10 @@
 	/// Defines damage type of the medkit. General ones stay null. Used for medibot healing bonuses
 	var/damagetype_healed
 
+/obj/item/storage/medkit/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/cuffable_item)
+
 /obj/item/storage/medkit/regular
 	icon_state = "medkit"
 	desc = "A first aid kit with the ability to heal common types of injuries."
@@ -371,14 +375,16 @@
 		balloon_alert(user, "items inside!")
 		return ITEM_INTERACT_BLOCKING
 
-	var/obj/item/bot_assembly/medbot/medbot_assembly = new()
+	var/obj/item/bot_assembly/medbot/medbot_assembly = new(drop_location())
 	medbot_assembly.set_skin(get_medbot_skin())
-	user.put_in_hands(medbot_assembly)
 	medbot_assembly.balloon_alert(user, "arm added")
 	medbot_assembly.robot_arm = tool.type
 	medbot_assembly.medkit_type = type
 	qdel(tool)
+	var/held_index = user.is_holding(src)
 	qdel(src)
+	if (held_index)
+		user.put_in_hand(medbot_assembly, held_index)
 	return ITEM_INTERACT_SUCCESS
 
 /// Gets what skin (icon_state) this medkit uses for a medbot

@@ -105,7 +105,7 @@
 	return FALSE
 
 /obj/structure/window/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
-	if(rcd_data["[RCD_DESIGN_MODE]"] == RCD_DECONSTRUCT)
+	if(rcd_data[RCD_DESIGN_MODE] == RCD_DECONSTRUCT)
 		qdel(src)
 		return TRUE
 	return FALSE
@@ -617,14 +617,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/spawner, 0)
 	state = WINDOW_OUT_OF_FRAME
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/unanchored/spawner, 0)
-
-// You can't rust glass! So only reinforced glass can be impacted.
-/obj/structure/window/reinforced/rust_heretic_act()
-	add_atom_colour(COLOR_RUSTED_GLASS, FIXED_COLOUR_PRIORITY)
-	AddElement(/datum/element/rust)
-	set_armor(/datum/armor/none)
-	take_damage(get_integrity() * 0.5)
-	modify_max_integrity(initial(max_integrity) * 0.2)
 
 /obj/structure/window/plasma
 	name = "plasma window"

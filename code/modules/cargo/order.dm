@@ -72,7 +72,7 @@
 	coupon,
 	charge_on_purchase = TRUE,
 	manifest_can_fail = TRUE,
-	cost_type = "cr",
+	cost_type = MONEY_SYMBOL,
 	can_be_cancelled = TRUE,
 )
 	id = SSshuttle.order_number++
@@ -98,7 +98,7 @@
 	var/cost = pack.get_cost()
 	if(applied_coupon) //apply discount price
 		cost *= (1 - applied_coupon.discount_pct_off)
-	if(paying_account && !pack.goody) //privately purchased and not a goody means 1.1x the cost
+	if(paying_account?.add_to_accounts && !pack.goody) //privately purchased and not a goody means 1.1x the cost
 		cost *= 1.1
 	return round(cost)
 
